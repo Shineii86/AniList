@@ -2,9 +2,9 @@
 
 I've created comprehensive copyright and legal usage documentation for all the generated images. Here's the complete legal framework:
 
-## 🎨 **Copyright Holder: Shinei Nouzen**
+## 🎨 **Copyright Holder: [Shinei Nouzen](https://linktr.ee/ikx7.a)**
 
-All generated images (logos and thumbnails) are now officially attributed to **Shinei Nouzen** with full copyright protection and clear usage guidelines.
+All generated images (logos and thumbnails) are now officially attributed to **[Shinei Nouzen](https://linktr.ee/ikx7.a)** with full copyright protection and clear usage guidelines.
 
 ## 📋 **Key Legal Points**
 
@@ -27,23 +27,23 @@ All generated images (logos and thumbnails) are now officially attributed to **S
 ## 🏷️ **Attribution Requirements**
 
 ### **Minimum Attribution:**
-```
+```json
 Images created by Shinei Nouzen
 ```
 
 ### **Recommended Attribution:**
-```
-AniList Clone Thumbnails & Logos
-Created by: Shinei Nouzen
-Project: AniList Complete Clone
-License: Creative Commons Attribution 4.0
+```json
+AniList Thumbnails & Logos
+"Created by": "Shinei Nouzen"
+"Project": "AniList"
+"License": "Creative Commons Attribution 4.0"
 ```
 
 ### **Full Attribution (Preferred):**
-```
+```json
 🎨 Design Credit
 Creator: Shinei Nouzen
-Project: AniList Clone - Production Ready
+Project: AniList - Production Ready
 Images: Logo variations and device mockup thumbnails
 Usage: Open source project assets
 License: CC BY 4.0
@@ -55,22 +55,20 @@ Year: 2025
 ### **For GitHub README:**
 ```markdown
 ## 🎨 Design Credits
-Logos and thumbnails created by **Shinei```uzen**  
-Licensed under [CC BY 4.0](https://creativecommons.org```censes/by/4.0/)
+Logos and thumbnails created by **[Shinei Nouzen](https://linktr.ee/ikx7.a)**  
+Licensed under [CC BY 4.0](https://creativecommons.org/censes/by/4.0/)
 ```
 
 ### **For Website Footer:**
 ```html
-
-  Logo designs by Shinei Nouzen```>
+  Logo designs by Shinei Nouzen
   Licensed under CC BY 4.0
-
 ```
 
 ### **For Social Media:**
 ```
 🎌 AniList Clone showcase
-🎨 Designs by Shinei Nouzen
+🎨 Designs by [Shinei Nouzen](https://linktr.ee/ikx7.a)
 #AnimeWebDev #AniList
 ```
 
@@ -97,15 +95,15 @@ The images are released under **CC BY 4.0**, which allows:
 - ✅ **Sharing** and redistribution
 - ✅ **Adaptation** and modification
 - ✅ **Commercial use** with proper attribution
-- 🏷️ **Attribution requirement** - Must credit Shinei Nouzen
+- 🏷️ **Attribution requirement** - Must credit [Shinei Nouzen](https://linktr.ee/ikx7.a)
 
 ## 📞 **Contact & Compliance**
 
-**Rights Holder:** Shinei Nouzen  
+**Rights Holder:** [Shinei Nouzen](https://linktr.ee/ikx7.a)  
 **Current Version:** 0.2 
 **Effective Date:** August 2025
 
 ### **Quick Reference:**
 **✅ DO:** Credit creator, use for educational/portfolio purposes, modify with attribution  
 **❌ DON'T:** Remove credits, claim authorship, use for trademark purposes  
-**🏷️ ATTRIBUTION:** `Created by Shinei Nouzen | CC BY 4.0 License`
+**🏷️ ATTRIBUTION:** `Created by [Shinei Nouzen](https://linktr.ee/ikx7.a) | CC BY 4.0 License`
