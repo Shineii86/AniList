@@ -1,8 +1,5 @@
-<div align="center">
+<div align="center"><a href="https://shineii86.github.io/AniList"><img src="https://raw.githubusercontent.com/Shineii86/AniList/refs/heads/main/assets/images/v1.png" LOGO" width="200" height="200"/></a>
 
-# [AniList V2](https://github.com/AniPulse)
-
-![Last Commit](https://img.shields.io/github/last-commit/Shineii86/AniList?style=for-the-badge)
 ![Repo Size](https://img.shields.io/github/repo-size/Shineii86/AniList?style=for-the-badge) [![GitHub Stars](https://img.shields.io/github/stars/Shineii86/AniList?style=for-the-badge)](https://github.com/Shineii86/AniList/stargazers) [![GitHub Forks](https://img.shields.io/github/forks/Shineii86/AniList?style=for-the-badge)](https://github.com/Shineii86/AniList/fork)
 
 **A complete, production-ready AniList clone built with modern web technologies**
@@ -1129,12 +1126,6 @@ SOFTWARE.
 
 <div align="center">
 
-*Star this project if you find it helpful!*
-
-<sup>Built with ❤️ by the anime community, for the anime community</sup>
-
----
-
 <a href="https://github.com/Shineii86/AniList">
 <img src="https://github.com/Shineii86/AniPay/blob/main/Source/Banner6.png" alt="Banner">
 </a>
@@ -1149,5 +1140,6 @@ SOFTWARE.
   <sup><b>Copyright © 2025 <a href="https://telegram.me/Shineii86">Shinei Nouzen</a> All Rights Reserved 
 v0.2</b></sup>
 
+![Last Commit](https://img.shields.io/github/last-commit/Shineii86/AniList?style=for-the-badge)
 
 </div>
