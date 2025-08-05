@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniList Clone - Discover & Track Anime</title>
+    <meta name="description" content="Discover, track, and manage your anime collection with our comprehensive anime database">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <h1>AniList</h1>
+                </div>
+                <nav class="nav">
+                    <button class="nav__link active" data-page="home">Home</button>
+                    <button class="nav__link" data-page="search">Search</button>
+                    <button class="nav__link" data-page="browse">Browse</button>
+                    <button class="nav__link" data-page="rankings">Rankings</button>
+                    <button class="nav__link" data-page="lists">My Lists</button>
+                </nav>
+                <div class="header__actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search anime...">
+                        <button id="searchButton" class="search-button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                        <div id="searchSuggestions" class="search-suggestions hidden"></div>
+                    </div>
+                    <button id="themeToggle" class="theme-toggle">
+                        <svg class="theme-icon theme-icon--light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="theme-icon theme-icon--dark hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Page -->
+            <section id="homePage" class="page active">
+                <!-- Hero Section -->
+                <div class="hero">
+                    <div class="hero__content">
+                        <h2 class="hero__title">Discover Amazing Anime</h2>
+                        <p class="hero__subtitle">Track, rate, and discover your next favorite anime</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary" data-action="start-search">Start Exploring</button>
+                            <button class="btn btn--outline" data-action="view-trending">View Trending</button>
+                        </div>
+                    </div>
+                    <div id="featuredCarousel" class="hero__carousel">
+                        <!-- Featured anime carousel will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Trending Section -->
+                <section class="section">
+                    <div class="section__header">
+                        <h3>Trending Now</h3>
+                        <button class="btn btn--outline btn--sm" data-action="view-all-trending">View All</button>
+                    </div>
+                    <div id="trendingGrid" class="anime-grid anime-grid--horizontal">
+                        <!-- Trending anime will be inserted here -->
+                    </div>
+                </section>
+
+                <!-- Popular This Season -->
+                <section class="section">
+                    <div class="section__header">
+                        <h3>Popular This Season</h3>
+                        <button class="btn btn--outline btn--sm" data-action="view-seasonal">View All</button>
+                    </div>
+                    <div id="seasonalGrid" class="anime-grid anime-grid--horizontal">
+                        <!-- Seasonal anime will be inserted here -->
+                    </div>
+                </section>
+
+                <!-- Recently Updated -->
+                <section class="section">
+                    <div class="section__header">
+                        <h3>Recently Updated</h3>
+                    </div>
+                    <div id="recentlyUpdatedGrid" class="anime-grid anime-grid--horizontal">
+                        <!-- Recently updated anime will be inserted here -->
+                    </div>
+                </section>
+            </section>
+
+            <!-- Search Page -->
+            <section id="searchPage" class="page hidden">
+                <div class="search-page">
+                    <div class="search-filters">
+                        <h3>Advanced Search</h3>
+                        <div class="filters-grid">
+                            <div class="filter-group">
+                                <label class="form-label">Genre</label>
+                                <select id="genreFilter" class="form-control">
+                                    <option value="">All Genres</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label class="form-label">Year</label>
+                                <select id="yearFilter" class="form-control">
+                                    <option value="">All Years</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label class="form-label">Status</label>
+                                <select id="statusFilter" class="form-control">
+                                    <option value="">All Status</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label class="form-label">Format</label>
+                                <select id="formatFilter" class="form-control">
+                                    <option value="">All Formats</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label class="form-label">Sort By</label>
+                                <select id="sortFilter" class="form-control">
+                                    <option value="POPULARITY_DESC">Popularity</option>
+                                    <option value="SCORE_DESC">Score</option>
+                                    <option value="TRENDING_DESC">Trending</option>
+                                    <option value="START_DATE_DESC">Newest</option>
+                                    <option value="START_DATE">Oldest</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" id="applyFilters">Apply Filters</button>
+                    </div>
+                    <div class="search-results">
+                        <div class="page-header">
+                            <h2>Search Results</h2>
+                            <p id="searchResultsText">Enter a search term or use filters to find anime</p>
+                        </div>
+                        <div id="searchGrid" class="anime-grid">
+                            <!-- Search results will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Browse Page -->
+            <section id="browsePage" class="page hidden">
+                <div class="browse-page">
+                    <div class="page-header">
+                        <h2>Browse Anime</h2>
+                        <p>Explore anime by different categories</p>
+                    </div>
+                    <div class="browse-categories">
+                        <div class="category-card" data-browse="genres">
+                            <h3>By Genre</h3>
+                            <p>Explore different anime genres</p>
+                        </div>
+                        <div class="category-card" data-browse="years">
+                            <h3>By Year</h3>
+                            <p>Browse anime by release year</p>
+                        </div>
+                        <div class="category-card" data-browse="studios">
+                            <h3>By Studio</h3>
+                            <p>Discover anime by studio</p>
+                        </div>
+                        <div class="category-card" data-browse="seasonal">
+                            <h3>Seasonal</h3>
+                            <p>Current and past seasons</p>
+                        </div>
+                    </div>
+                    <div id="browseResults" class="browse-results hidden">
+                        <div id="browseGrid" class="anime-grid">
+                            <!-- Browse results will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rankings Page -->
+            <section id="rankingsPage" class="page hidden">
+                <div class="page-header">
+                    <h2>Top Anime Rankings</h2>
+                    <p>Highest rated anime of all time</p>
+                </div>
+                <div class="rankings-filters">
+                    <button class="btn btn--outline active" data-ranking="all">All Time</button>
+                    <button class="btn btn--outline" data-ranking="popular">Most Popular</button>
+                    <button class="btn btn--outline" data-ranking="trending">Trending</button>
+                </div>
+                <div id="rankingsGrid" class="anime-grid">
+                    <!-- Rankings will be inserted here -->
+                </div>
+            </section>
+
+            <!-- My Lists Page -->
+            <section id="listsPage" class="page hidden">
+                <div class="page-header">
+                    <h2>My Anime Lists</h2>
+                    <p>Manage and track your anime collection</p>
+                </div>
+                <div class="lists-nav">
+                    <button class="btn btn--outline active" data-list="watching">Watching</button>
+                    <button class="btn btn--outline" data-list="completed">Completed</button>
+                    <button class="btn btn--outline" data-list="planning">Plan to Watch</button>
+                    <button class="btn btn--outline" data-list="paused">On Hold</button>
+                    <button class="btn btn--outline" data-list="dropped">Dropped</button>
+                </div>
+                <div id="listsGrid" class="anime-grid">
+                    <!-- User lists will be inserted here -->
+                </div>
+                <div id="emptyList" class="empty-state hidden">
+                    <h3>Your list is empty</h3>
+                    <p>Start adding anime to track your progress!</p>
+                    <button class="btn btn--primary" data-action="start-search">Find Anime</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Anime Detail Modal -->
+    <div id="animeModal" class="modal hidden">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="closeModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal__body">
+                <div id="animeDetails">
+                    <!-- Anime details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List Management Modal -->
+    <div id="listModal" class="modal modal--small hidden">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="closeListModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal__body">
+                <div class="list-management">
+                    <h3>Add to List</h3>
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <select id="listStatus" class="form-control">
+                            <option value="">Select Status</option>
+                            <option value="watching">Watching</option>
+                            <option value="completed">Completed</option>
+                            <option value="planning">Plan to Watch</option>
+                            <option value="paused">On Hold</option>
+                            <option value="dropped">Dropped</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Progress</label>
+                        <input type="number" id="listProgress" class="form-control" min="0" placeholder="Episodes watched">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Score (1-10)</label>
+                        <input type="number" id="listScore" class="form-control" min="1" max="10" placeholder="Rate this anime">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notes</label>
+                        <textarea id="listNotes" class="form-control" rows="3" placeholder="Personal notes..."></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn--primary" id="saveToList">Save</button>
+                        <button class="btn btn--outline" id="cancelList">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h4>AniList</h4>
+                    <p>A production-ready anime database and tracking app built with vanilla JS, HTML, CSS, and AniList GraphQL API. Features advanced search with filters, personal lists (watching/completed/planning), dark/light themes, responsive design, infinite scroll, and user progress tracking. Deploy easily with GitHub + Vercel.</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">About</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">Help</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://telegram.me/Shineii86" target="_blank">Telegram</a></li>
+                        <li><a href="https://x.com/Shineii86" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">Github</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>Copyright &copy; 2025 Shinei Nouzen Data provided by AniList API.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
