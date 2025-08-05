@@ -1,0 +1,52 @@
+{
+  "name": "anilist",
+  "version": "1.0.0",
+  "description": "Complete AniList clone with advanced features - anime database and tracking application",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -p 3000 -o",
+    "start": "http-server -p 8080",
+    "build": "echo 'Static build complete'",
+    "deploy": "vercel --prod",
+    "preview": "vercel",
+    "lint": "eslint *.js",
+    "format": "prettier --write *.{html,css,js}",
+    "serve": "python -m http.server 3000"
+  },
+  "keywords": [
+    "anime",
+    "anilist",
+    "clone",
+    "database",
+    "tracking",
+    "graphql",
+    "javascript",
+    "responsive",
+    "pwa"
+  ],
+  "author": "Shinei Nouzen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shineii86/AniList.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shineii86/AniList/issues"
+  },
+  "homepage": "https://github.com/Shineii86/AniList#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.0.0",
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
+  ]
+}
