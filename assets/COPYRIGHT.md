@@ -27,12 +27,12 @@ All generated images (logos and thumbnails) are now officially attributed to **[
 ## 🏷️ **Attribution Requirements**
 
 ### **Minimum Attribution:**
-```json
+```
 Images created by Shinei Nouzen
 ```
 
 ### **Recommended Attribution:**
-```json
+```
 AniList Thumbnails & Logos
 "Created by": "Shinei Nouzen"
 "Project": "AniList"
