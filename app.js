@@ -176,8 +176,74 @@ let currentAnimeId = null;
 let currentFilters = {};
 
 // Data
-const GENRES = ["Action", "Adventure", "Comedy", "Drama", "Ecchi", "Fantasy", "Horror", "Mahou Shoujo", "Mecha", "Music", "Mystery", "Psychological", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller"];
-const YEARS = Array.from({length: 10}, (_, i) => 2024 - i);
+const GENRES = [
+  // Main Demographics
+  "Kodomomuke",
+  "Shounen", 
+  "Shoujo",
+  "Seinen",
+  "Josei",
+  
+  // Core Genres
+  "Action",
+  "Adventure", 
+  "Comedy",
+  "Drama",
+  "Romance",
+  "Fantasy",
+  "Sci-Fi",
+  "Horror",
+  "Mystery",
+  "Thriller",
+  "Supernatural",
+  "Psychological",
+  
+  // Specialized Genres
+  "Slice of Life",
+  "Sports",
+  "Mecha",
+  "Ecchi",
+  "Harem",
+  "Yaoi",
+  "Yuri",
+  "Isekai",
+  "Mahou Shoujo",
+  "Music",
+  "Historical",
+  "Martial Arts",
+  "Military",
+  "School",
+  "Gore",
+  "Parody",
+  "Samurai",
+  "Vampire",
+  "Demons",
+  "Magic",
+  "War",
+  "Post-Apocalyptic", 
+  "Cyberpunk",
+  "Space",
+  "Time Travel",
+  "Cooking",
+  "Game",
+  "Super Power",
+  "Cars",
+  "Kids",
+  "Neo-noir",
+  "Philosophical",
+  "Survival",
+  "Suspense",
+  "Western",
+  "Villainess",
+  "Coming-of-age",
+  "Epic",
+  "Girls with guns",
+  "Sentai",
+  "Sword and sorcery",
+  "Crossover",
+  "Hentai"
+];
+const YEARS = Array.from({length: 100}, (_, i) => 2025 - i);
 const SEASONS = ["WINTER", "SPRING", "SUMMER", "FALL"];
 const STATUSES = [
   { value: "FINISHED", label: "Finished" },
