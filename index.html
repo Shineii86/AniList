@@ -10,13 +10,18 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
             <div class="header__content">
                 <div class="logo">
                     <h1>AniList</h1>
                 </div>
-                <nav class="nav">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                </button>
+                <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
                     <button class="nav__link active" data-page="home">Home</button>
                     <button class="nav__link" data-page="search">Search</button>
                     <button class="nav__link" data-page="browse">Browse</button>
@@ -25,16 +30,16 @@
                 </nav>
                 <div class="header__actions">
                     <div class="search-container">
-                        <input type="text" id="searchInput" class="search-input" placeholder="Search anime...">
-                        <button id="searchButton" class="search-button">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search anime..." aria-label="Search anime" autocomplete="off">
+                        <button id="searchButton" class="search-button" aria-label="Search">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.35-4.35"></path>
                             </svg>
                         </button>
-                        <div id="searchSuggestions" class="search-suggestions hidden"></div>
+                        <div id="searchSuggestions" class="search-suggestions hidden" role="listbox" aria-label="Search suggestions"></div>
                     </div>
-                    <button id="themeToggle" class="theme-toggle">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
                         <svg class="theme-icon theme-icon--light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -53,33 +58,54 @@
                 </div>
             </div>
         </div>
+        <!-- Mobile Drawer -->
+        <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+            <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+            <div class="mobile-drawer__panel">
+                <div class="mobile-drawer__header">
+                    <h2>Menu</h2>
+                    <button class="mobile-drawer__close" id="drawerClose" aria-label="Close menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="mobile-drawer__nav" aria-label="Mobile navigation">
+                    <button class="mobile-drawer__link active" data-page="home">Home</button>
+                    <button class="mobile-drawer__link" data-page="search">Search</button>
+                    <button class="mobile-drawer__link" data-page="browse">Browse</button>
+                    <button class="mobile-drawer__link" data-page="rankings">Rankings</button>
+                    <button class="mobile-drawer__link" data-page="lists">My Lists</button>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
-    <main class="main">
+    <main class="main" role="main">
         <div class="container">
             <!-- Home Page -->
-            <section id="homePage" class="page active">
-                <!-- Hero Section -->
-                <div class="hero">
-                    <div class="hero__content">
-                        <h2 class="hero__title">Discover Amazing Anime</h2>
-                        <p class="hero__subtitle">Track, rate, and discover your next favorite anime</p>
-                        <div class="hero__actions">
-                            <button class="btn btn--primary" data-action="start-search">Start Exploring</button>
-                            <button class="btn btn--outline" data-action="view-trending">View Trending</button>
-                        </div>
+            <section id="homePage" class="page active page-transition">
+                <!-- Hero Carousel -->
+                <div class="hero-carousel" id="heroCarousel" aria-label="Featured anime carousel">
+                    <div class="hero-carousel__track" id="carouselTrack">
+                        <!-- Slides injected by JS -->
                     </div>
-                    <div id="featuredCarousel" class="hero__carousel">
-                        <!-- Featured anime carousel will be inserted here -->
-                    </div>
+                    <button class="hero-carousel__arrow hero-carousel__arrow--prev" id="carouselPrev" aria-label="Previous slide">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="hero-carousel__arrow hero-carousel__arrow--next" id="carouselNext" aria-label="Next slide">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    <div class="hero-carousel__dots" id="carouselDots" role="tablist" aria-label="Carousel navigation"></div>
                 </div>
 
                 <!-- Trending Section -->
-                <section class="section">
+                <section class="section scroll-reveal">
                     <div class="section__header">
                         <h3>Trending Now</h3>
-                        <button class="btn btn--outline btn--sm" data-action="view-all-trending">View All</button>
+                        <button class="btn btn--outline btn--sm" data-action="view-all-trending">See All</button>
                     </div>
                     <div id="trendingGrid" class="anime-grid anime-grid--horizontal">
                         <!-- Trending anime will be inserted here -->
@@ -87,18 +113,40 @@
                 </section>
 
                 <!-- Popular This Season -->
-                <section class="section">
+                <section class="section scroll-reveal">
                     <div class="section__header">
                         <h3>Popular This Season</h3>
-                        <button class="btn btn--outline btn--sm" data-action="view-seasonal">View All</button>
+                        <button class="btn btn--outline btn--sm" data-action="view-seasonal">See All</button>
                     </div>
                     <div id="seasonalGrid" class="anime-grid anime-grid--horizontal">
                         <!-- Seasonal anime will be inserted here -->
                     </div>
                 </section>
 
+                <!-- Popular This Year -->
+                <section class="section scroll-reveal">
+                    <div class="section__header">
+                        <h3>Popular This Year</h3>
+                        <button class="btn btn--outline btn--sm" data-action="view-popular-year">See All</button>
+                    </div>
+                    <div id="popularYearGrid" class="anime-grid anime-grid--horizontal">
+                        <!-- Popular this year anime will be inserted here -->
+                    </div>
+                </section>
+
+                <!-- Top 100 -->
+                <section class="section scroll-reveal">
+                    <div class="section__header">
+                        <h3>Top 100 Anime</h3>
+                        <button class="btn btn--outline btn--sm" data-action="view-top100">See All</button>
+                    </div>
+                    <div id="top100Grid" class="anime-grid anime-grid--horizontal ranking-grid">
+                        <!-- Top 100 anime will be inserted here -->
+                    </div>
+                </section>
+
                 <!-- Recently Updated -->
-                <section class="section">
+                <section class="section scroll-reveal">
                     <div class="section__header">
                         <h3>Recently Updated</h3>
                     </div>
@@ -109,16 +157,20 @@
             </section>
 
             <!-- Search Page -->
-            <section id="searchPage" class="page hidden">
+            <section id="searchPage" class="page hidden page-transition">
                 <div class="search-page">
                     <div class="search-filters">
                         <h3>Advanced Search</h3>
                         <div class="filters-grid">
                             <div class="filter-group">
-                                <label class="form-label">Genre</label>
-                                <select id="genreFilter" class="form-control">
-                                    <option value="">All Genres</option>
-                                </select>
+                                <label class="form-label">Genres</label>
+                                <div class="genre-chips-container" id="genreChipsContainer">
+                                    <div class="genre-chips" id="genreChips"></div>
+                                    <select id="genreFilter" class="form-control genre-select">
+                                        <option value="">+ Add Genre</option>
+                                    </select>
+                                </div>
+                                <div class="selected-genres" id="selectedGenres"></div>
                             </div>
                             <div class="filter-group">
                                 <label class="form-label">Year</label>
@@ -149,7 +201,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button class="btn btn--primary" id="applyFilters">Apply Filters</button>
+                        <button class="btn btn--primary btn--full-width" id="applyFilters">Apply Filters</button>
                     </div>
                     <div class="search-results">
                         <div class="page-header">
@@ -164,31 +216,54 @@
             </section>
 
             <!-- Browse Page -->
-            <section id="browsePage" class="page hidden">
+            <section id="browsePage" class="page hidden page-transition">
                 <div class="browse-page">
                     <div class="page-header">
                         <h2>Browse Anime</h2>
                         <p>Explore anime by different categories</p>
                     </div>
-                    <div class="browse-categories">
-                        <div class="category-card" data-browse="genres">
-                            <h3>By Genre</h3>
-                            <p>Explore different anime genres</p>
-                        </div>
-                        <div class="category-card" data-browse="years">
-                            <h3>By Year</h3>
-                            <p>Browse anime by release year</p>
-                        </div>
-                        <div class="category-card" data-browse="studios">
-                            <h3>By Studio</h3>
-                            <p>Discover anime by studio</p>
-                        </div>
-                        <div class="category-card" data-browse="seasonal">
-                            <h3>Seasonal</h3>
-                            <p>Current and past seasons</p>
+                    <!-- Browse tabs -->
+                    <div class="browse-tabs">
+                        <button class="browse-tab active" data-browse-tab="genres">Genres</button>
+                        <button class="browse-tab" data-browse-tab="years">Years</button>
+                        <button class="browse-tab" data-browse-tab="studios">Studios</button>
+                        <button class="browse-tab" data-browse-tab="seasonal">Seasonal</button>
+                    </div>
+
+                    <!-- Genre Grid -->
+                    <div class="browse-panel active" id="browseGenres">
+                        <div class="genre-grid" id="genreGrid">
+                            <!-- Genre cards injected by JS -->
                         </div>
                     </div>
+
+                    <!-- Year Timeline -->
+                    <div class="browse-panel" id="browseYears">
+                        <div class="year-timeline" id="yearTimeline">
+                            <!-- Year buttons injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Studios -->
+                    <div class="browse-panel" id="browseStudios">
+                        <div class="studio-grid" id="studioGrid">
+                            <!-- Studio cards injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Seasonal -->
+                    <div class="browse-panel" id="browseSeasonal">
+                        <div class="seasonal-grid" id="seasonalGrid2">
+                            <!-- Seasonal cards injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Browse Results -->
                     <div id="browseResults" class="browse-results hidden">
+                        <div class="browse-results__header">
+                            <h3 id="browseResultsTitle">Results</h3>
+                            <button class="btn btn--outline btn--sm" id="browseBackBtn">Back to Browse</button>
+                        </div>
                         <div id="browseGrid" class="anime-grid">
                             <!-- Browse results will be inserted here -->
                         </div>
@@ -197,7 +272,7 @@
             </section>
 
             <!-- Rankings Page -->
-            <section id="rankingsPage" class="page hidden">
+            <section id="rankingsPage" class="page hidden page-transition">
                 <div class="page-header">
                     <h2>Top Anime Rankings</h2>
                     <p>Highest rated anime of all time</p>
@@ -213,10 +288,29 @@
             </section>
 
             <!-- My Lists Page -->
-            <section id="listsPage" class="page hidden">
+            <section id="listsPage" class="page hidden page-transition">
                 <div class="page-header">
                     <h2>My Anime Lists</h2>
                     <p>Manage and track your anime collection</p>
+                </div>
+                <!-- List Stats Panel -->
+                <div class="list-stats" id="listStats">
+                    <div class="list-stats__card">
+                        <div class="list-stats__value" id="statTotalAnime">0</div>
+                        <div class="list-stats__label">Total Anime</div>
+                    </div>
+                    <div class="list-stats__card">
+                        <div class="list-stats__value" id="statTotalEpisodes">0</div>
+                        <div class="list-stats__label">Total Episodes</div>
+                    </div>
+                    <div class="list-stats__card">
+                        <div class="list-stats__value" id="statAvgScore">0</div>
+                        <div class="list-stats__label">Avg Score</div>
+                    </div>
+                    <div class="list-stats__card">
+                        <div class="list-stats__value" id="statTimeSpent">0h</div>
+                        <div class="list-stats__label">Time Spent</div>
+                    </div>
                 </div>
                 <div class="lists-nav">
                     <button class="btn btn--outline active" data-list="watching">Watching</button>
@@ -225,7 +319,18 @@
                     <button class="btn btn--outline" data-list="paused">On Hold</button>
                     <button class="btn btn--outline" data-list="dropped">Dropped</button>
                 </div>
-                <div id="listsGrid" class="anime-grid">
+                <div class="list-actions">
+                    <button class="btn btn--outline btn--sm" id="exportListBtn" title="Export list as JSON">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export JSON
+                    </button>
+                    <label class="btn btn--outline btn--sm" title="Import list from JSON">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        Import JSON
+                        <input type="file" id="importListInput" accept=".json" style="display:none">
+                    </label>
+                </div>
+                <div id="listsGrid" class="anime-grid" data-droppable="true">
                     <!-- User lists will be inserted here -->
                 </div>
                 <div id="emptyList" class="empty-state hidden">
@@ -238,10 +343,10 @@
     </main>
 
     <!-- Anime Detail Modal -->
-    <div id="animeModal" class="modal hidden">
+    <div id="animeModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Anime details">
         <div class="modal__backdrop"></div>
         <div class="modal__content">
-            <button class="modal__close" id="closeModal">
+            <button class="modal__close" id="closeModal" aria-label="Close modal">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -256,10 +361,10 @@
     </div>
 
     <!-- List Management Modal -->
-    <div id="listModal" class="modal modal--small hidden">
+    <div id="listModal" class="modal modal--small hidden" role="dialog" aria-modal="true" aria-label="Add to list">
         <div class="modal__backdrop"></div>
         <div class="modal__content">
-            <button class="modal__close" id="closeListModal">
+            <button class="modal__close" id="closeListModal" aria-label="Close modal">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -269,7 +374,7 @@
                 <div class="list-management">
                     <h3>Add to List</h3>
                     <div class="form-group">
-                        <label class="form-label">Status</label>
+                        <label class="form-label" for="listStatus">Status</label>
                         <select id="listStatus" class="form-control">
                             <option value="">Select Status</option>
                             <option value="watching">Watching</option>
@@ -280,15 +385,15 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Progress</label>
+                        <label class="form-label" for="listProgress">Progress</label>
                         <input type="number" id="listProgress" class="form-control" min="0" placeholder="Episodes watched">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Score (1-10)</label>
+                        <label class="form-label" for="listScore">Score (1-10)</label>
                         <input type="number" id="listScore" class="form-control" min="1" max="10" placeholder="Rate this anime">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Notes</label>
+                        <label class="form-label" for="listNotes">Notes</label>
                         <textarea id="listNotes" class="form-control" rows="3" placeholder="Personal notes..."></textarea>
                     </div>
                     <div class="modal-actions">
@@ -301,15 +406,15 @@
     </div>
 
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay hidden">
+    <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
         <div class="loading-spinner"></div>
     </div>
 
     <!-- Toast Notifications -->
-    <div id="toastContainer" class="toast-container"></div>
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer__content">
                 <div class="footer__section">
@@ -319,17 +424,17 @@
                 <div class="footer__section">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">About</a></li>
-                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">Help</a></li>
-                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">API</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank" rel="noopener">About</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank" rel="noopener">Help</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank" rel="noopener">API</a></li>
                     </ul>
                 </div>
                 <div class="footer__section">
                     <h4>Community</h4>
                     <ul>
-                        <li><a href="https://telegram.me/Shineii86" target="_blank">Telegram</a></li>
-                        <li><a href="https://x.com/Shineii86" target="_blank">Twitter</a></li>
-                        <li><a href="https://github.com/Shineii86/AniList" target="_blank">Github</a></li>
+                        <li><a href="https://telegram.me/Shineii86" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="https://x.com/Shineii86" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="https://github.com/Shineii86/AniList" target="_blank" rel="noopener">Github</a></li>
                     </ul>
                 </div>
             </div>
