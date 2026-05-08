@@ -5,6 +5,7 @@ import { QUERIES } from './config.js';
 import { fetchFromAniList } from './api.js';
 import { loadHomePage, performSearch, loadRankings, loadUserList, initBrowsePage, initializeSearchPage, exportList, importList, addCardClickListeners, initScrollAnimations } from './pages.js';
 import { openAnimeModal, openListModal, closeAnimeModal, closeListModal, saveToList } from './modal.js';
+import { init3DCards, initRipple, initSectionReveal, initCounterAnimation, initParallax, initKeyboardNav } from './interactions.js';
 
 // ===== Theme =====
 function initTheme() {
@@ -384,6 +385,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize
   loadHomePage(openAnimeModalFn, openListModalFn);
+
+  // Micro-interactions & Effects
+  init3DCards();
+  initRipple();
+  initSectionReveal();
+  initCounterAnimation();
+  initParallax();
+  initKeyboardNav();
 });
 
 if ('serviceWorker' in navigator) {
